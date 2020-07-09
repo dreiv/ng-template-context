@@ -1,13 +1,17 @@
 <h1>Movies</h1>
 <div *ngFor="let movie of movies">
-  <span>{{ movie.name }}</span>
-  <p>{{ movie.description }}</p>
-  <button (click)="onClick(movie)">Click Me</button>
+  <ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ $implicit: movie }">
+  </ng-container>
 </div>
 
 <h1>Favorite Movies</h1>
 <div *ngFor="let movie of favoriteMovies">
-  <span>{{ movie.name }}</span>
-  <p>{{ movie.description }}</p>
-  <button (click)="onClick(movie)">Click Me</button>
+  <ng-container [ngTemplateOutlet]="itemTemplate" [ngTemplateOutletContext]="{ $implicit: movie }">
+  </ng-container>
 </div>
+
+<ng-template #itemTemplate let-item>
+  <span>{{ item.name }}</span>
+  <p>{{ item.description }}</p>
+  <button (click)="onClick(item)">Click Me</button>
+</ng-template>
