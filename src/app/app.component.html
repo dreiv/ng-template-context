@@ -1,3 +1,24 @@
+<ng-container *ngTemplateOutlet="tpl, context: {
+  'param1': paramTemplate1,
+  'param2': paramTemplate2
+}">
+</ng-container>
+
+<ng-template #paramTemplate1>
+  <span>Hello</span>
+</ng-template>
+
+<ng-template #paramTemplate2>
+  <span>World</span>
+</ng-template>
+
+<ng-template #tpl let-param1="param1" let-param2="param2">
+  <ng-container *ngTemplateOutlet="param1"></ng-container>
+  <ng-container *ngTemplateOutlet="param2"></ng-container>
+</ng-template>
+
+<hr>
+
 <h1>Movies</h1>
 <ng-container *ngTemplateOutlet="listTemplate; context: {$implicit: movies}">
 </ng-container>
